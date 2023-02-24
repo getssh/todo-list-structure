@@ -14,6 +14,7 @@ function renderTasks(tasks) {
     const taskIcon = document.createElement('span');
     const todoItemEl = document.createElement('li');
     const checkboxEl = document.createElement('input');
+    const removeButtonEl = document.createElement('button');
 
     taskIcon.className = 'material-symbols-outlined';
     taskIcon.innerHTML = 'more_vert';
@@ -21,12 +22,23 @@ function renderTasks(tasks) {
     checkboxEl.type = 'checkbox';
     checkboxEl.checked = tasks[i].completed;
     taskWrapper.appendChild(checkboxEl);
-    // const descriptionEl = document.createTextNode(tasks[i].description);
+
     const descriptionEl = document.createElement('input');
     descriptionEl.type = 'text';
     descriptionEl.value = tasks[i].description;
     descriptionEl.readOnly = true;
     taskWrapper.appendChild(descriptionEl);
+
+    removeButtonEl.innerText = 'Remove';
+    removeButtonEl.addEventListener('click', () => {
+      tasks = tasks.filter((task) => task.index !== tasks[i].index);
+      // Re-arrange index
+      tasks = tasks.map((task, index) => ({ ...task, index }));
+      renderTasks(tasks);
+      console.log(tasks);
+    });
+    taskWrapper.appendChild(removeButtonEl);
+
     todoItemEl.appendChild(taskWrapper);
     todoItemEl.appendChild(taskIcon);
     todoListEl.appendChild(todoItemEl);

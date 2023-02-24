@@ -21,7 +21,11 @@ function renderTasks(tasks) {
     checkboxEl.type = 'checkbox';
     checkboxEl.checked = tasks[i].completed;
     taskWrapper.appendChild(checkboxEl);
-    const descriptionEl = document.createTextNode(tasks[i].description);
+    // const descriptionEl = document.createTextNode(tasks[i].description);
+    const descriptionEl = document.createElement('input');
+    descriptionEl.type = 'text';
+    descriptionEl.value = tasks[i].description;
+    descriptionEl.readOnly = true;
     taskWrapper.appendChild(descriptionEl);
     todoItemEl.appendChild(taskWrapper);
     todoItemEl.appendChild(taskIcon);

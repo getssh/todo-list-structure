@@ -30,6 +30,7 @@ main > * {
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  margin-bottom: 0.1rem;
 }
 
 .todo-input input {

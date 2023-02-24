@@ -74,23 +74,20 @@ input::placeholder {
 #todo-lists input {
   border: none;
   font-size: 1.1rem;
+  margin-right: 0.5rem;
 }
 
-#todo-lists>*:hover {
+#todo-lists > *:hover {
   background-color: #f7f77c;
 }
 
-#todo-lists>*:hover input {
+#todo-lists > *:hover input {
   background-color: #f7f77c;
 }
 
-#todo-lists>*:hover .remove-btn {
+#todo-lists > *:hover .remove-btn {
   display: block;
   cursor: pointer;
-}
-
-#todo-lists input {
-  margin-right: 0.5rem;
 }
 
 #todo-lists > li:last-child {

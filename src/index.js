@@ -1,6 +1,6 @@
 import './style.css';
 
-let tasks = [];
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 const todoListEl = document.getElementById('todo-lists');
 const todoInputEl = document.getElementById('todo-input');
@@ -20,9 +20,12 @@ function renderTasks(tasks) {
 
   function createRemoveListener(i, tasks) {
     return () => {
-      tasks = tasks.filter((task) => task.index !== tasks[i].index);
+      tasks.splice(i, 1);
 
-      tasks = tasks.map((task, index) => ({ ...task, index }));
+      tasks.forEach((task, index) => {
+        task.index = index;
+      });
+
       renderTasks(tasks);
       localStorage.setItem('tasks', JSON.stringify(tasks));
     };
@@ -44,7 +47,7 @@ function renderTasks(tasks) {
     const removeButtonEl = document.createElement('button');
 
     taskIcon.className = 'material-symbols-outlined';
-    taskIcon.innerHTML = 'more_vert';
+    taskIcon.innerText = 'more_vert';
 
     checkboxEl.type = 'checkbox';
     checkboxEl.checked = tasks[i].completed;
@@ -64,11 +67,13 @@ function renderTasks(tasks) {
     descriptionEl.addEventListener('blur', createBlurListener(i, tasks, descriptionEl));
     taskWrapper.appendChild(descriptionEl);
 
-    removeButtonEl.innerText = 'Remove';
+    removeButtonEl.innerText = 'delete';
+    removeButtonEl.className = 'material-symbols-outlined';
+    removeButtonEl.classList.add('remove-btn');
     removeButtonEl.addEventListener('click', createRemoveListener(i, tasks));
-    taskWrapper.appendChild(removeButtonEl);
 
     todoItemEl.appendChild(taskWrapper);
+    todoItemEl.appendChild(removeButtonEl);
     todoItemEl.appendChild(taskIcon);
 
     if (tasks[i].completed) {
@@ -77,11 +82,6 @@ function renderTasks(tasks) {
 
     todoListEl.appendChild(todoItemEl);
   }
-}
-
-if (localStorage.getItem('tasks')) {
-  tasks = JSON.parse(localStorage.getItem('tasks'));
-  renderTasks(tasks);
 }
 
 document.querySelector('.todo-input').addEventListener('submit', (e) => {
@@ -102,8 +102,8 @@ document.querySelector('.todo-input').addEventListener('submit', (e) => {
   tasks.push(newTask);
   todoInputEl.value = '';
 
-  renderTasks(tasks);
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  renderTasks(tasks);
 });
 
 renderTasks(tasks);

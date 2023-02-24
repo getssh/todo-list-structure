@@ -7,10 +7,10 @@ body {
 
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
 }
 
 main {
@@ -20,11 +20,12 @@ main {
   box-shadow: 0.5px 0.5px 10px rgba(000, 000, 000, 0.5);
 }
 
-main>* {
+main > * {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.todo-title, .todo-input {
+.todo-title,
+.todo-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +53,7 @@ input::placeholder {
   padding: 0;
 }
 
-#todo-lists>* {
+#todo-lists > * {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,7 +65,7 @@ input::placeholder {
   margin-right: 0.5rem;
 }
 
-#todo-lists>li:last-child {
+#todo-lists > li:last-child {
   border-bottom: none;
 }
 

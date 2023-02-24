@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <title>Todo Structure</title>
 </head>
 <body>
-    <h1>Hello webpack!</h1>
+  <!-- <span class="material-symbols-outlined">
+    more_vert
+  </span>
+  <span class="material-symbols-outlined sync">
+    sync
+  </span>
 </body>
+<span class="material-symbols-outlined">
+  keyboard_return
+</span> -->
+  <main>
+    <div class="todo-title">
+      <h3>Today's To Do</h3>
+      <span class="material-symbols-outlined sync">
+      sync
+      </span>
+    </div>
+    <form action="" method="post" class="todo-input">
+      <input type="text" id="todo-input" placeholder="Add to your list...">
+      <span class="material-symbols-outlined">
+        keyboard_return
+      </span>
+    </form>
+    <ul id="todo-lists">
+
+    </ul>
+    <div class="clear-complete">
+      <p>Clear all completed</p>
+    </div>
+  </main>
 </html>

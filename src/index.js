@@ -1,6 +1,6 @@
 import './style.css';
 
-const tasks = [];
+let tasks = [];
 
 const todoListEl = document.getElementById('todo-lists');
 const todoInputEl = document.getElementById('todo-input');
@@ -14,15 +14,17 @@ function renderTasks(tasks) {
       tasks[i].description = updatedDescription;
       descriptionEl.readOnly = true;
       renderTasks(tasks);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     };
   }
 
   function createRemoveListener(i, tasks) {
     return () => {
       tasks = tasks.filter((task) => task.index !== tasks[i].index);
-      // Re-arrange index
+
       tasks = tasks.map((task, index) => ({ ...task, index }));
       renderTasks(tasks);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     };
   }
 
@@ -30,7 +32,7 @@ function renderTasks(tasks) {
     return (event) => {
       tasks[i].completed = event.target.checked;
       renderTasks(tasks);
-      console.log(tasks);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     };
   }
 
@@ -46,7 +48,7 @@ function renderTasks(tasks) {
 
     checkboxEl.type = 'checkbox';
     checkboxEl.checked = tasks[i].completed;
-    // Add an event listener to the checkbox input element
+
     checkboxEl.addEventListener('change', createCheckboxListener(i, tasks));
     taskWrapper.appendChild(checkboxEl);
 
@@ -54,11 +56,11 @@ function renderTasks(tasks) {
     descriptionEl.type = 'text';
     descriptionEl.value = tasks[i].description;
     descriptionEl.readOnly = true;
-    // Add an event listener to the description input element
+
     descriptionEl.addEventListener('click', () => {
       descriptionEl.readOnly = false;
     });
-    // Add an event listener to the description input element
+
     descriptionEl.addEventListener('blur', createBlurListener(i, tasks, descriptionEl));
     taskWrapper.appendChild(descriptionEl);
 
@@ -75,6 +77,11 @@ function renderTasks(tasks) {
 
     todoListEl.appendChild(todoItemEl);
   }
+}
+
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  renderTasks(tasks);
 }
 
 document.querySelector('.todo-input').addEventListener('submit', (e) => {
@@ -96,6 +103,7 @@ document.querySelector('.todo-input').addEventListener('submit', (e) => {
   todoInputEl.value = '';
 
   renderTasks(tasks);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 });
 
 renderTasks(tasks);

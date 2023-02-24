@@ -23,7 +23,7 @@ function renderTasks(tasks) {
       tasks.splice(i, 1);
 
       tasks.forEach((task, index) => {
-        task.index = index;
+        task.index = index + 1;
       });
 
       renderTasks(tasks);
@@ -96,7 +96,7 @@ document.querySelector('.todo-input').addEventListener('submit', (e) => {
   const newTask = {
     description: newTaskDescription,
     completed: false,
-    index: tasks.length,
+    index: tasks.length + 1,
   };
 
   tasks.push(newTask);

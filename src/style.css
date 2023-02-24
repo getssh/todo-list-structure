@@ -76,3 +76,8 @@ input::placeholder {
   align-items: center;
   background-color: #f6f6f6;
 }
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

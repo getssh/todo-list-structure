@@ -26,6 +26,14 @@ function renderTasks(tasks) {
     };
   }
 
+  function createCheckboxListener(i, tasks) {
+    return (event) => {
+      tasks[i].completed = event.target.checked;
+      renderTasks(tasks);
+      console.log(tasks);
+    };
+  }
+
   for (let i = 0; i < tasks.length; i += 1) {
     const taskWrapper = document.createElement('div');
     const taskIcon = document.createElement('span');
@@ -38,6 +46,8 @@ function renderTasks(tasks) {
 
     checkboxEl.type = 'checkbox';
     checkboxEl.checked = tasks[i].completed;
+    // Add an event listener to the checkbox input element
+    checkboxEl.addEventListener('change', createCheckboxListener(i, tasks));
     taskWrapper.appendChild(checkboxEl);
 
     const descriptionEl = document.createElement('input');
@@ -58,6 +68,11 @@ function renderTasks(tasks) {
 
     todoItemEl.appendChild(taskWrapper);
     todoItemEl.appendChild(taskIcon);
+
+    if (tasks[i].completed) {
+      descriptionEl.classList.add('completed');
+    }
+
     todoListEl.appendChild(todoItemEl);
   }
 }

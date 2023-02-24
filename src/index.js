@@ -1,13 +1,30 @@
 import './style.css';
 
-const todoLists = [];
+const tasks = [];
 
 const todoListEl = document.getElementById('todo-lists');
 const todoInputEl = document.getElementById('todo-input');
-const tasks = [];
 
 function renderTasks(tasks) {
   todoListEl.innerHTML = '';
+
+  function createBlurListener(i, tasks, descriptionEl) {
+    return () => {
+      const updatedDescription = descriptionEl.value.trim();
+      tasks[i].description = updatedDescription;
+      descriptionEl.readOnly = true;
+      renderTasks(tasks);
+    };
+  }
+
+  function createRemoveListener(i, tasks) {
+    return () => {
+      tasks = tasks.filter((task) => task.index !== tasks[i].index);
+      // Re-arrange index
+      tasks = tasks.map((task, index) => ({ ...task, index }));
+      renderTasks(tasks);
+    };
+  }
 
   for (let i = 0; i < tasks.length; i += 1) {
     const taskWrapper = document.createElement('div');
@@ -27,16 +44,16 @@ function renderTasks(tasks) {
     descriptionEl.type = 'text';
     descriptionEl.value = tasks[i].description;
     descriptionEl.readOnly = true;
+    // Add an event listener to the description input element
+    descriptionEl.addEventListener('click', () => {
+      descriptionEl.readOnly = false;
+    });
+    // Add an event listener to the description input element
+    descriptionEl.addEventListener('blur', createBlurListener(i, tasks, descriptionEl));
     taskWrapper.appendChild(descriptionEl);
 
     removeButtonEl.innerText = 'Remove';
-    removeButtonEl.addEventListener('click', () => {
-      tasks = tasks.filter((task) => task.index !== tasks[i].index);
-      // Re-arrange index
-      tasks = tasks.map((task, index) => ({ ...task, index }));
-      renderTasks(tasks);
-      console.log(tasks);
-    });
+    removeButtonEl.addEventListener('click', createRemoveListener(i, tasks));
     taskWrapper.appendChild(removeButtonEl);
 
     todoItemEl.appendChild(taskWrapper);
@@ -66,4 +83,4 @@ document.querySelector('.todo-input').addEventListener('submit', (e) => {
   renderTasks(tasks);
 });
 
-renderTasks(todoLists);
+renderTasks(tasks);

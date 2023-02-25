@@ -15,7 +15,7 @@ body {
 
 main {
   background-color: #fff;
-  width: 40%;
+  width: fit-content;
   margin: auto;
   box-shadow: 0.5px 0.5px 10px rgba(000, 000, 000, 0.5);
   position: relative;

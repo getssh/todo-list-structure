@@ -5,11 +5,11 @@
   "description": "<a name=\"readme-top\"></a>",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "webpack",
-    "start": "webpack serve --open"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

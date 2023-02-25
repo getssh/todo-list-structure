@@ -60,7 +60,7 @@ For this project, HTML, CSS and JavaScript has been used
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo](https://getssh.github.io/todo-list-structure/dist/)
+- [Live Demo](https://getssh.github.io/todo-list-structure/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

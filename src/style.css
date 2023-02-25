@@ -101,6 +101,11 @@ input::placeholder {
   background-color: #f6f6f6;
 }
 
+.clear-complete p:hover {
+  cursor: pointer;
+  color: #f00;
+}
+
 .completed {
   text-decoration: line-through;
   opacity: 0.5;

@@ -2,7 +2,7 @@
 
 # 📗 Table of Contents
 
-- [� Table of Contents](#-table-of-contents)
+- [📗 Table of Contents](#-table-of-contents)
 - [📖 \[Todo-list-structure\] ](#-todo-list-structure-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
@@ -60,7 +60,7 @@ For this project, HTML, CSS and JavaScript has been used
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- There is no live demo for now
+- [Live Demo](https://getssh.github.io/todo-list-structure/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

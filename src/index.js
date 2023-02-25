@@ -1,27 +1,16 @@
 import './style.css';
+import renderTasks from './taskList.js';
+import addTask from './addTask.js';
 
-const todoLists = [
-  { description: 'wash the dishes', completed: true, index: 0 },
-  { description: 'complete To Do list project', completed: false, index: 1 },
-];
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 const todoListEl = document.getElementById('todo-lists');
+const todoInputEl = document.getElementById('todo-input');
 
-for (let i = 0; i < todoLists.length; i += 1) {
-  const taskWrapper = document.createElement('div');
-  const taskIcon = document.createElement('span');
-  const todoItemEl = document.createElement('li');
-  const checkboxEl = document.createElement('input');
+renderTasks(tasks, todoListEl);
 
-  taskIcon.className = 'material-symbols-outlined';
-  taskIcon.innerHTML = 'more_vert';
-
-  checkboxEl.type = 'checkbox';
-  checkboxEl.checked = todoLists[i].completed;
-  taskWrapper.appendChild(checkboxEl);
-  const descriptionEl = document.createTextNode(todoLists[i].description);
-  taskWrapper.appendChild(descriptionEl);
-  todoItemEl.appendChild(taskWrapper);
-  todoItemEl.appendChild(taskIcon);
-  todoListEl.appendChild(todoItemEl);
-}
+document.querySelector('.todo-input').addEventListener('submit', (e) => {
+  e.preventDefault();
+  addTask(tasks, todoInputEl);
+  renderTasks(tasks, todoListEl);
+});

@@ -16,11 +16,13 @@ document.querySelector('.todo-input').addEventListener('submit', (e) => {
   renderTasks(tasks, todoListEl);
 });
 
-clearComplete.addEventListener('click', () => {
+function delteCompleted() {
   tasks = tasks.filter((task) => !task.completed);
   tasks.forEach((task, index) => {
     task.index = index + 1;
   });
-  renderTasks(tasks, todoInputEl);
   localStorage.setItem('tasks', JSON.stringify(tasks));
-});
+  renderTasks(tasks, todoInputEl);
+}
+
+clearComplete.addEventListener('click', delteCompleted);

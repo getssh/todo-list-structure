@@ -41,7 +41,7 @@ function renderTasks(tasks) {
     const checkboxEl = document.createElement('input');
     const removeButtonEl = document.createElement('button');
 
-    taskIcon.className = 'material-symbols-outlined';
+    taskIcon.className = 'material-symbols-outlined move-task';
     taskIcon.innerText = 'more_vert';
 
     checkboxEl.type = 'checkbox';

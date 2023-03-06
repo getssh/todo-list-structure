@@ -25,6 +25,19 @@ main > * {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
+.move-task {
+  margin-left: 1.5rem;
+}
+
+.move-task:hover {
+  cursor: grab;
+}
+
+.return-icon:hover,
+.sync:hover {
+  cursor: pointer;
+}
+
 .todo-title,
 .todo-input {
   display: flex;
@@ -51,9 +64,10 @@ input::placeholder {
 .remove-btn {
   align-self: flex-end;
   position: absolute;
-  right: 1px;
-  margin-right: 0.4rem;
+  right: 25px;
+  margin-right: 1rem;
   display: none;
+  padding-left: 5px;
 }
 
 #todo-lists {
@@ -74,18 +88,18 @@ input::placeholder {
 #todo-lists input {
   border: none;
   font-size: 1.1rem;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+}
+
+#todo-list input[type="text"] {
+  margin-right: 5rem;
 }
 
 #todo-lists > *:hover {
   background-color: #f7f77c;
 }
 
-#todo-lists > *:hover input {
-  background-color: #f7f77c;
-}
-
-#todo-lists > *:hover .remove-btn {
+#todo-lists > li:hover .remove-btn {
   display: block;
   cursor: pointer;
 }

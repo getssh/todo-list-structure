@@ -31,6 +31,11 @@ main > * {
 
 .move-task:hover {
   cursor: grab;
+  user-select: none;
+}
+
+.move-task:active {
+  cursor: grabbing;
 }
 
 .return-icon:hover,
@@ -68,6 +73,7 @@ input::placeholder {
   margin-right: 1rem;
   display: none;
   padding-left: 5px;
+  user-select: none;
 }
 
 #todo-lists {
